@@ -6,6 +6,7 @@ class MovableObject extends DrawableObject {
     acceleration = 2;
     energy = 100;
     lastHit = 0;
+    coinAmmount = 0;
 
 
     applyGravity() {
@@ -40,6 +41,10 @@ class MovableObject extends DrawableObject {
         } else {
             this.lastHit = new Date().getTime();
         }
+    }
+
+    collect() {
+        this.coinAmmount ++;
     }
 
     isHurt() {
