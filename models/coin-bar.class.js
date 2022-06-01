@@ -2,7 +2,7 @@ class CoinBar extends DrawableObject {
 
     IMAGES_COIN_BAR = [
         'img/7.Marcadores/Barra/Marcador moneda/Naranja/0_.png',
-        'img/7.Marcadores/Barra/Marcador moneda/Naranja/20_.png',
+        'img/7.Marcadores/Barra/Marcador moneda/Naranja/20_ .png',
         'img/7.Marcadores/Barra/Marcador moneda/Naranja/40_.png',
         'img/7.Marcadores/Barra/Marcador moneda/Naranja/60_.png',
         'img/7.Marcadores/Barra/Marcador moneda/Naranja/80__1.png',
