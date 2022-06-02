@@ -13,6 +13,7 @@ function init() {
 function showCanvas() {
     let canvas = document.getElementById('canvas');
     canvas.classList.add("show-canvas");
+    document.getElementById("start-btn").blur();
 }
 
 window.addEventListener('keydown', (e) => {
