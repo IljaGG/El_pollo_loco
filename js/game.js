@@ -7,10 +7,12 @@ let keyboard = new Keyboard;
 function init() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
+    showCanvas();
+}
 
-
-
-    console.log('My Character is', world.character);
+function showCanvas() {
+    let canvas = document.getElementById('canvas');
+    canvas.classList.add("show-canvas");
 }
 
 window.addEventListener('keydown', (e) => {
@@ -33,7 +35,7 @@ window.addEventListener('keydown', (e) => {
         keyboard.D = true;
     }
 
-    
+
 });
 
 window.addEventListener('keyup', (e) => {

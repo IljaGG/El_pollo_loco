@@ -51,7 +51,7 @@ class World {
             if (this.character.isColliding(coin)) {
                 this.character.collect();
                 this.coinBar.setCoinAmmount(this.character.coinAmmount);
-                this.level.coins.splice(coin, index);
+                this.level.coins.splice(index, 1);
             }
         });
     }
