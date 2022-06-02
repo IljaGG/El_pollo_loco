@@ -28,17 +28,17 @@ class CoinBar extends DrawableObject {
     }
 
     resolveImageIndex() {
-        if (this.coinsAmmount == 5) {
+        if (this.coinsAmmount == 100) {
             return 5;
-        } else if (this.coinsAmmount == 4) {
+        } else if (this.coinsAmmount >= 80) {
             return 4;   
-        } else if (this.coinsAmmount == 3) {
+        } else if (this.coinsAmmount >= 60) {
             return 3;
-        } else if (this.coinsAmmount == 2) {
+        } else if (this.coinsAmmount >= 40) {
             return 2;
-        } else if (this.coinsAmmount == 1) {
+        } else if (this.coinsAmmount >= 20) {
             return 1;
-        } else {
+        } else if (this.coinsAmmount >= 0) {
             return 0;
         }
     }

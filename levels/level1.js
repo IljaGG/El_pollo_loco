@@ -45,12 +45,20 @@ const level1 = new Level(
         new Bottle()
     ],
     [
-        new Coin('img/8.Coin/Moneda1.png', 200, 200),
-        new Coin('img/8.Coin/Moneda1.png', 240, 160),
-        new Coin('img/8.Coin/Moneda1.png', 300,130),
-        new Coin('img/8.Coin/Moneda1.png', 360, 130),
-        new Coin('img/8.Coin/Moneda1.png', 420, 160),
-        new Coin('img/8.Coin/Moneda1.png', 470, 200)
+        new Coin(),
+        new Coin(),
+        new Coin(),
+        new Coin(),
+        new Coin(),
+        new Coin(),
+        new Coin(),
+        new Coin(),
+        new Coin(),
+        new Coin(),
+        new Coin(),
+        new Coin(),
+        new Coin(),
+        new Coin()
     ]
 
 );
