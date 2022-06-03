@@ -22,6 +22,11 @@ class World {
         this.character.world = this;
     }
 
+    animate() {
+        this.level.animateLevel();
+        this.character.animate();
+    }
+
     run() {
         setInterval(() => {
             this.checkCollisions();

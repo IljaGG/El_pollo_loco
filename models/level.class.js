@@ -14,4 +14,12 @@ constructor(enemies, clouds, backgroundObjects, bottles, coins) {
     this.bottles = bottles;
     this.coins = coins;
 }
+
+animateLevel() {
+    this.animateAll(this.enemies, this.clouds, this.coins);
+}
+
+animateAll(mos) {
+    mos.forEach( mo => mo.animate() );
+}
 }

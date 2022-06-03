@@ -7,8 +7,10 @@ let keyboard = new Keyboard;
 function init() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
+    world.animate();
     showCanvas();
 }
+
 
 function showCanvas() {
     let canvas = document.getElementById('canvas');
