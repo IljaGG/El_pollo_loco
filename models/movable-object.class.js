@@ -7,6 +7,7 @@ class MovableObject extends DrawableObject {
     energy = 100;
     lastHit = 0;
     coinAmmount = 0;
+    bottleAmmount = 0;
 
 
     applyGravity() {
@@ -25,6 +26,7 @@ class MovableObject extends DrawableObject {
             return this.y < 180;
         }
     }
+    
 
     // character.isColliding(chicken);
     isColliding(mo) {
@@ -43,7 +45,7 @@ class MovableObject extends DrawableObject {
         }
     }
 
-    collect() {
+    collectCoin() {
         this.coinAmmount ++;
     }
 

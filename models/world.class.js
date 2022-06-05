@@ -7,6 +7,7 @@ class World {
     camera_x = 0;
     statusBar = new StatusBar();
     coinBar = new CoinBar();
+    bottleBar = new BottleBar();
     throwableObjects = [];
 
     constructor(canvas, keyboard) {
@@ -54,9 +55,19 @@ class World {
     checkCoinCollisions() {
         this.level.coins.forEach((coin, index) => {
             if (this.character.isColliding(coin)) {
-                this.character.collect();
+                this.character.collectCoin();
                 this.coinBar.setCoinAmmount(this.character.coinAmmount);
                 this.level.coins.splice(index, 1);
+            }
+        });
+    }
+
+    checkBottleCollisions() {
+        this.level.bottles.forEach((bottle, index) => {
+            if (this.character.isColliding(bottle)) {
+                this.character.collectBottle();
+                this.bottleBar.setBottleAmmount(this.character.bottleAmmount);
+                this.level.bottles.splice(index, 1);
             }
         });
     }
@@ -81,6 +92,7 @@ class World {
         // ----- space for fixed objects -----
         this.addToMap(this.statusBar);
         this.addToMap(this.coinBar);
+        this.addToMap(this.bottleBar);
         this.ctx.translate(this.camera_x, 0);
 
         this.ctx.translate(-this.camera_x, 0);
