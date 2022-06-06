@@ -16,7 +16,7 @@ constructor(enemies, clouds, backgroundObjects, bottles, coins) {
 }
 
 animateLevel() {
-    this.animateAll(this.enemies, this.clouds, this.coins);
+    this.animateAll(this.enemies, this.clouds, this.bottles, this.coins);
 }
 
 animateAll(mos) {

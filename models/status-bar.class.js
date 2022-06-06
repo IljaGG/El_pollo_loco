@@ -13,7 +13,7 @@ class StatusBar extends DrawableObject {
     
 
     constructor() {
-        super();
+        super().loadImage('img/7.Marcadores/Barra/Marcador vida/azul/0_.png');
         this.loadImages(this.IMAGES);
         this.x = 60;
         this.y = 20;

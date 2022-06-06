@@ -49,6 +49,10 @@ class MovableObject extends DrawableObject {
         this.coinAmmount ++;
     }
 
+    collectBottle() {
+        this.bottleAmmount ++;
+    }
+
     isHurt() {
         let timePassed = new Date().getTime() - this.lastHit; // Difference in MS
         timePassed = timePassed / 1000; // Difference in seconds
