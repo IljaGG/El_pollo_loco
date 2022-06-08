@@ -7,6 +7,13 @@ class Chicken extends MovableObject{
         'img/3.Secuencias_Enemy_bsico/Version_Gallinita_estas_salen_por_orden_de_la_gallina_gigantona/3.Ga_paso izquierdo.png'
     ];
 
+    offset = {
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0
+    };
+
     constructor() {
         super().loadImage('img/3.Secuencias_Enemy_bsico/Version_Gallinita_estas_salen_por_orden_de_la_gallina_gigantona/1.Ga_paso_derecho.png');
         this.loadImages(this.IMAGES_WALKING);

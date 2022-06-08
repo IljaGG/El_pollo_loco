@@ -39,6 +39,13 @@ class Character extends MovableObject {
         'img/2.Secuencias_Personaje-Pepe-correccion/4.Herido/H-43.png'
     ];
 
+    offset = {
+        top: 80,
+        left: 40,
+        right: 30,
+        bottom: 20
+    };
+
     world;
     walking_sound = new Audio('audio/walk.mp3');
 

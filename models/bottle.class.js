@@ -5,6 +5,13 @@ class Bottle extends MovableObject{
         'img/6.botella/2.Botella_enterrada2.png'
     ];
 
+    offset = {
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0
+    };
+    
     constructor() {
         super();
         this.loadImages(this.IMAGES_BOTTLE);

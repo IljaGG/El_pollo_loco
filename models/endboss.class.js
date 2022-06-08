@@ -4,6 +4,13 @@ class Endboss extends MovableObject {
     width = 300;
     height = 300;
 
+    offset = {
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0
+    };
+    
     IMAGES_WALKING = [
         'img/4.Secuencias_Enemy_giganton-Dosa_Gallinota-/1.Caminata/G1.png',
         'img/4.Secuencias_Enemy_giganton-Dosa_Gallinota-/1.Caminata/G2.png',
