@@ -22,11 +22,13 @@ class MovableObject extends DrawableObject {
     isAboveGround() {
         if (this instanceof ThrowableObject) {
             return true;
-        } else {
+        } else if (this instanceof Character) {
             return this.y < 180;
+        } else {
+            return this.y < 372;
         }
     }
-    
+
 
     // character.isColliding(chicken);
     isColliding(mo) {
@@ -46,11 +48,11 @@ class MovableObject extends DrawableObject {
     }
 
     collectCoin() {
-        this.coinAmmount ++;
+        this.coinAmmount++;
     }
 
     collectBottle() {
-        this.bottleAmmount ++;
+        this.bottleAmmount++;
     }
 
     isHurt() {
@@ -79,6 +81,11 @@ class MovableObject extends DrawableObject {
     }
 
     jump() {
+
         this.speedY = 23;
+    }
+
+    isSleeping() {
+        return !this.world.keyboard.LEFT, !this.world.keyboard.RIGHT, !this.world.keyboard.SPACE, !this.world.keyboard.D, !this.isDead(), !this.isHurt();
     }
 }

@@ -9,6 +9,14 @@ const level1 = new Level(
         new Chicken(),
         new Chicken(),
         new Chicken(),
+        new JumpingChicken(),
+        new JumpingChicken(),
+        new JumpingChicken(),
+        new JumpingChicken(),
+        new JumpingChicken(),
+        new JumpingChicken(),
+        new JumpingChicken(),
+        new JumpingChicken(),
         new Endboss()
     ],
     [
@@ -72,13 +80,6 @@ const level1 = new Level(
         new BackgroundObject('img/5.Fondo/Capas/1.suelo-fondo1/2.png', 719 * 9, 0)
     ],
     [
-        new Bottle(),
-        new Bottle(),
-        new Bottle(),
-        new Bottle(),
-        new Bottle(),
-        new Bottle(),
-        new Bottle(),
         new Bottle(),
         new Bottle(),
         new Bottle(),
