@@ -8,7 +8,9 @@ class MovableObject extends DrawableObject {
     lastHit = 0;
     coinAmmount = 0;
     bottleAmmount = 0;
-
+    timeNow = 0;
+    lastAction = 0;
+    characterIsMoving = false;
 
     applyGravity() {
         setInterval(() => {
@@ -65,6 +67,28 @@ class MovableObject extends DrawableObject {
         return this.energy == 0;
     }
 
+    checkCharacterMoving() {
+        if (this.world.keyboard.LEFT || this.world.keyboard.RIGHT || this.world.keyboard.D || this.isAboveGround()) {
+            this.lastAction = new Date().getTime();
+            this.characterIsMoving = true;
+        }
+        this.timeNow = new Date().getTime();
+    }
+
+    restOrSleepAnimation() {
+        if (!this.characterIsMoving && this.timeNow - this.lastAction > 6000) {
+            this.playAnimation(this.IMAGES_SLEEPING);
+        } else {
+            this.playAnimation(this.IMAGES_BORED);
+        }
+    }
+    
+    boredAnimation() {
+        if (this.timeNow - this.lastAction > 6000) {
+            this.playAnimation(this.IMAGES_SLEEPING);
+        }
+    }
+
     moveRight() {
         this.x += this.speed;
     }
@@ -81,11 +105,8 @@ class MovableObject extends DrawableObject {
     }
 
     jump() {
-
         this.speedY = 23;
     }
 
-    isSleeping() {
-        return !this.world.keyboard.LEFT, !this.world.keyboard.RIGHT, !this.world.keyboard.SPACE, !this.world.keyboard.D, !this.isDead(), !this.isHurt();
-    }
+
 }

@@ -6,10 +6,10 @@ class Coin extends MovableObject {
     ];
    
     offset = {
-        top: 15,
-        left: 15,
-        right: 15,
-        bottom: 15
+        top: 25,
+        left: 25,
+        right: 25,
+        bottom: 25
     };
     
     constructor() {
@@ -17,7 +17,7 @@ class Coin extends MovableObject {
         this.loadImages(this.IMAGES_COIN);
         
         this.x = 200 + Math.random() * 5752
-        this.y = 250 - Math.random() * 200;
+        this.y = 250 - Math.random() * 150;
         this.width = 100;
         this.height = 100;
         this.animate();

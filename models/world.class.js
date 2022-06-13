@@ -16,6 +16,7 @@ class World {
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
+        this.runCharacter();
         this.run();
     }
 
@@ -28,13 +29,18 @@ class World {
         this.character.animate();
     }
 
-    run() {
+    runCharacter() {
         setInterval(() => {
             this.checkCollisions();
+        }, 200);
+    }
+
+    run() {
+        setInterval(() => {
             this.checkThrowObjects();
             this.checkCoinCollisions();
             this.checkBottleCollisions();
-        }, 200);
+        }, 1000 / 25);
     }
 
     checkThrowObjects() {
