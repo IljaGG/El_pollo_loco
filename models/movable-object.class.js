@@ -20,6 +20,16 @@ class MovableObject extends DrawableObject {
             }
         }, 1000 / 25);
     }
+// deadPepe geht noch nicht, er soll unter Erde fallen, wenn tot
+    applyGravityForDeadPepe() { 
+        if (this.isDead()) {
+        setInterval(() => {
+                this.y -= this.speedY;
+                this.speedY -= this.acceleration;
+        }, 1000 / 25);
+    }
+    }
+    
 
     isAboveGround() {
         if (this instanceof ThrowableObject) {
@@ -70,15 +80,24 @@ class MovableObject extends DrawableObject {
     checkCharacterMoving() {
         if (this.world.keyboard.LEFT || this.world.keyboard.RIGHT || this.world.keyboard.D || this.isAboveGround()) {
             this.lastAction = new Date().getTime();
-            this.characterIsMoving = true;
         }
         this.timeNow = new Date().getTime();
     }
 
+    checkEndbossInSight() {
+        if (this.isInSight()) {
+        this.playAnimation(this.IMAGES_ALERT);
+        }
+    }
+
+    isInSight() {
+       this.character.x + this.character.width - this.Endboss.x > 200
+    }
+
     restOrSleepAnimation() {
-        if (!this.characterIsMoving && this.timeNow - this.lastAction > 6000) {
+        if (this.timeNow - this.lastAction > 8000) {
             this.playAnimation(this.IMAGES_SLEEPING);
-        } else {
+        } else if (this.timeNow - this.lastAction > 4000) {
             this.playAnimation(this.IMAGES_BORED);
         }
     }

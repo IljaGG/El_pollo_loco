@@ -43,3 +43,7 @@ canvas {
 .show-canvas {
     z-index: 3;
 }
+
+.d-none {
+    display: none;
+}

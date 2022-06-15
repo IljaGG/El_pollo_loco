@@ -9,6 +9,7 @@ function init() {
     world = new World(canvas, keyboard);
     world.animate();
     showCanvas();
+    
 }
 
 
@@ -16,6 +17,12 @@ function showCanvas() {
     let canvas = document.getElementById('canvas');
     canvas.classList.add("show-canvas");
     document.getElementById("start-btn").blur();
+    hideStartButton();
+}
+
+function hideStartButton() {
+    let startButton = document.getElementById('start-btn');
+    startButton.classList.add("d-none");
 }
 
 window.addEventListener('keydown', (e) => {

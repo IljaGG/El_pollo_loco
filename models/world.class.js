@@ -59,6 +59,16 @@ class World {
         });
     }
 
+    checkEndbossInSight() {
+        if (this.character.isInSight()) {
+        this.playAnimation(this.IMAGES_ALERT);
+        }
+    }
+
+    isInSight() {
+       this.character.x + this.character.width - this.Endboss.x > 200
+    }
+
     checkCoinCollisions() {
         this.level.coins.forEach((coin, index) => {
             if (this.character.isColliding(coin)) {

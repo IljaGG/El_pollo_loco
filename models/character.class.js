@@ -50,7 +50,7 @@ class Character extends MovableObject {
         'img/2.Secuencias_Personaje-Pepe-correccion/1.IDLE/IDLE/I-8.png',
         'img/2.Secuencias_Personaje-Pepe-correccion/1.IDLE/IDLE/I-9.png',
         'img/2.Secuencias_Personaje-Pepe-correccion/1.IDLE/IDLE/I-10.png'
-    ]
+    ];
 
     IMAGES_SLEEPING = [
         'img/2.Secuencias_Personaje-Pepe-correccion/1.IDLE/LONG_IDLE/I-11.png',
@@ -63,7 +63,7 @@ class Character extends MovableObject {
         'img/2.Secuencias_Personaje-Pepe-correccion/1.IDLE/LONG_IDLE/I-18.png',
         'img/2.Secuencias_Personaje-Pepe-correccion/1.IDLE/LONG_IDLE/I-19.png',
         'img/2.Secuencias_Personaje-Pepe-correccion/1.IDLE/LONG_IDLE/I-20.png'
-    ]
+    ];
 
     offset = {
         top: 80,
@@ -84,10 +84,17 @@ class Character extends MovableObject {
         this.loadImages(this.IMAGES_BORED);
         this.loadImages(this.IMAGES_SLEEPING);
         this.applyGravity();
+       // this.applyGravityForDeadPepe();
         //this.animate();
     }
 
     animate() {
+
+        setInterval(() => {
+            this.checkCharacterMoving();
+            this.checkEndbossInSight();
+        }, 200);
+
         setInterval(() => {
             this.walking_sound.pause();
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
@@ -112,7 +119,7 @@ class Character extends MovableObject {
             if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_JUMPING);
             }
-        }, 250);
+        }, 130);
 
 
         setInterval(() => {
