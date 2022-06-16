@@ -92,7 +92,6 @@ class Character extends MovableObject {
 
         setInterval(() => {
             this.checkCharacterMoving();
-            this.checkEndbossInSight();
         }, 200);
 
         setInterval(() => {

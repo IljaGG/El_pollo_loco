@@ -20,7 +20,7 @@ class MovableObject extends DrawableObject {
             }
         }, 1000 / 25);
     }
-// deadPepe geht noch nicht, er soll unter Erde fallen, wenn tot
+/* deadPepe geht noch nicht, er soll unter Erde fallen, wenn tot
     applyGravityForDeadPepe() { 
         if (this.isDead()) {
         setInterval(() => {
@@ -28,7 +28,7 @@ class MovableObject extends DrawableObject {
                 this.speedY -= this.acceleration;
         }, 1000 / 25);
     }
-    }
+    }*/
     
 
     isAboveGround() {
@@ -84,7 +84,7 @@ class MovableObject extends DrawableObject {
         this.timeNow = new Date().getTime();
     }
 
-    checkEndbossInSight() {
+    /*checkEndbossInSight() {
         if (this.isInSight()) {
         this.playAnimation(this.IMAGES_ALERT);
         }
@@ -92,7 +92,7 @@ class MovableObject extends DrawableObject {
 
     isInSight() {
        this.character.x + this.character.width - this.Endboss.x > 200
-    }
+    }*/
 
     restOrSleepAnimation() {
         if (this.timeNow - this.lastAction > 8000) {

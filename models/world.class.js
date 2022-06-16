@@ -9,6 +9,7 @@ class World {
     coinBar = new CoinBar();
     bottleBar = new BottleBar();
     throwableObjects = [];
+    endbossInArr = this.level.enemies.length - 1;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -52,7 +53,7 @@ class World {
 
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy) ) {
+            if (this.character.isColliding(enemy)) {
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energy);
             }
@@ -60,13 +61,17 @@ class World {
     }
 
     checkEndbossInSight() {
-        if (this.character.isInSight()) {
-        this.playAnimation(this.IMAGES_ALERT);
+        if (this.isInSight()) {
+            this.playAnimation(this.IMAGES_ALERT);
         }
     }
 
     isInSight() {
-       this.character.x + this.character.width - this.Endboss.x > 200
+        if (this.level.enemies[this.endbossInArr].x - (this.character.x + this.character.width) < 300) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     checkCoinCollisions() {
@@ -133,7 +138,7 @@ class World {
         if (mo.otherDirection) {
             this.flipImage(mo);
         }
-        
+
         mo.draw(this.ctx);
 
         //border
@@ -154,6 +159,6 @@ class World {
 
     flipImageBack(mo) {
         mo.x = mo.x * -1;
-            this.ctx.restore();
+        this.ctx.restore();
     }
 }
