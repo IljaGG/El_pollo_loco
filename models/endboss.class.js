@@ -42,22 +42,18 @@ class Endboss extends MovableObject {
     animate() {
 
         setInterval(() => {
-            this.world.endbossIsInSight();
-        }, 200);
 
         if (this.world.endbossIsInSight() == true) {
-            setInterval(() => {
+            
                 this.playAnimation(this.IMAGES_ALERT);
-            }, 200);
-        }
+        
+        } else {
 
-        setInterval(() => {
             this.moveLeft();
-        }, 1000 / 60);
-
-        setInterval(() => {
+       
             this.playAnimation(this.IMAGES_WALKING);
-        }, 200);
+        }
+    }, 200);
     }
 
 }
