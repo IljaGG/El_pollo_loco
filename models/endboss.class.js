@@ -3,6 +3,7 @@ class Endboss extends MovableObject {
     speed = 0.5;
     width = 300;
     height = 300;
+    world;
 
     offset = {
         top: 0,
@@ -40,17 +41,24 @@ class Endboss extends MovableObject {
 
     animate() {
 
-        if (this.x - this.character.x < 200) {
-            this.playAnimation(this.IMAGES_ALERT);
-        } else {
-            setInterval(() => {
-                this.moveLeft();
-            }, 1000 / 60);
+        setInterval(() => {
+            this.world.endbossIsInSight();
+        }, 200);
 
+        if (this.world.endbossIsInSight() == true) {
             setInterval(() => {
-                this.playAnimation(this.IMAGES_WALKING);
+                this.playAnimation(this.IMAGES_ALERT);
             }, 200);
         }
+
+        setInterval(() => {
+            this.moveLeft();
+        }, 1000 / 60);
+
+        setInterval(() => {
+            this.playAnimation(this.IMAGES_WALKING);
+        }, 200);
     }
 
 }
+

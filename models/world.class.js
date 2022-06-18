@@ -9,7 +9,8 @@ class World {
     coinBar = new CoinBar();
     bottleBar = new BottleBar();
     throwableObjects = [];
-    endbossInArr = this.level.enemies.length - 1;
+    //endbossInArr = this.level.enemies.length - 1;
+    endboss = this.level.enemies.find(e => e instanceof Endboss);
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -23,6 +24,7 @@ class World {
 
     setWorld() {
         this.character.world = this;
+        this.endboss.world = this;
     }
 
     animate() {
@@ -60,14 +62,9 @@ class World {
         });
     }
 
-    checkEndbossInSight() {
-        if (this.isInSight()) {
-            this.playAnimation(this.IMAGES_ALERT);
-        }
-    }
 
-    isInSight() {
-        if (this.level.enemies[this.endbossInArr].x - (this.character.x + this.character.width) < 300) {
+    endbossIsInSight() {
+        if (this.endboss.x - (this.character.x + this.character.width) < 300) {
             return true;
         } else {
             return false;
