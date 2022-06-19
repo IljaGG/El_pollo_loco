@@ -48,12 +48,15 @@ class Endboss extends MovableObject {
                 this.playAnimation(this.IMAGES_ALERT);
         
         } else {
-
-            this.moveLeft();
-       
-            this.playAnimation(this.IMAGES_WALKING);
+            this.playAnimation(this.IMAGES_WALKING);    
         }
     }, 200);
+
+    setInterval(() => {
+        if (this.world.endbossIsInSight() == false) {
+        this.moveLeft();
+    }
+    }, 1000 / 60)
     }
 
 }

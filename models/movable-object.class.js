@@ -84,16 +84,6 @@ class MovableObject extends DrawableObject {
         this.timeNow = new Date().getTime();
     }
 
-    /*checkEndbossInSight() {
-        if (this.isInSight()) {
-        this.playAnimation(this.IMAGES_ALERT);
-        }
-    }
-
-    isInSight() {
-       this.character.x + this.character.width - this.Endboss.x > 200
-    }*/
-
     restOrSleepAnimation() {
         if (this.timeNow - this.lastAction > 8000) {
             this.playAnimation(this.IMAGES_SLEEPING);

@@ -64,7 +64,7 @@ class World {
 
 
     endbossIsInSight() {
-        if (this.endboss.x - (this.character.x + this.character.width) < 300) {
+        if (this.endboss.x - (this.character.x + this.character.width) < 200) {
             return true;
         } else {
             return false;
