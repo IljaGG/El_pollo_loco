@@ -8,21 +8,23 @@ function init() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
     world.animate();
-    showCanvas();
-    
 }
 
-
-function showCanvas() {
-    let canvas = document.getElementById('canvas');
-    canvas.classList.add("show-canvas");
-    document.getElementById("start-btn").blur();
-    hideStartButton();
-}
-
-function hideStartButton() {
+function startGame() {
+    let startDiv = document.getElementById('start');
     let startButton = document.getElementById('start-btn');
-    startButton.classList.add("d-none");
+    let gameCanvas = document.getElementById('canvas');
+    let gameOver = document.getElementById('game-over');
+    startDiv.style.display = 'display:none';
+    startButton.classList.add('d-none');
+    startButton.blur();
+    gameCanvas.style.display = 'block';
+    gameOver.style.display = 'display:none';
+    init();
+}
+
+function reloadGame() {
+    window.location = 'index.html';
 }
 
 window.addEventListener('keydown', (e) => {

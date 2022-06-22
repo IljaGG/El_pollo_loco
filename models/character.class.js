@@ -74,6 +74,7 @@ class Character extends MovableObject {
 
     world;
     walking_sound = new Audio('audio/walk.mp3');
+    jump_sound = new Audio('audio/jump.mp3');
 
     constructor() {
         super().loadImage('img/2.Secuencias_Personaje-Pepe-correccion/2.Secuencia_caminata/W-21.png');
@@ -84,8 +85,7 @@ class Character extends MovableObject {
         this.loadImages(this.IMAGES_BORED);
         this.loadImages(this.IMAGES_SLEEPING);
         this.applyGravity();
-       // this.applyGravityForDeadPepe();
-        //this.animate();
+        // this.applyGravityForDeadPepe();s
     }
 
     animate() {
@@ -96,6 +96,7 @@ class Character extends MovableObject {
 
         setInterval(() => {
             this.walking_sound.pause();
+            this.jump_sound.pause();
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.moveRight();
                 this.otherDirection = false;
@@ -109,6 +110,7 @@ class Character extends MovableObject {
 
             if (this.world.keyboard.SPACE && !this.isAboveGround()) {
                 this.jump();
+                this.jump_sound.play();
             }
             this.world.camera_x = -this.x + 100;
 
@@ -121,9 +123,14 @@ class Character extends MovableObject {
         }, 130);
 
 
-        setInterval(() => {
+        let gameInProgressInterval = setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
+                setTimeout(() => {
+                    this.gameOver();
+                    clearInterval(gameInProgressInterval);
+                }, 3000);
+
             } else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
             } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
@@ -134,6 +141,16 @@ class Character extends MovableObject {
             }
         }, 150);
 
+    }
+
+
+    gameOver() {
+        let startDiv = document.getElementById('start');
+        let gameCanvas = document.getElementById('canvas');
+        let gameOver = document.getElementById('game-over');
+        startDiv.style.display = 'none';
+        gameCanvas.style.display = 'none';
+        gameOver.style.display = 'block';
     }
 
 }

@@ -4,44 +4,67 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.wrapper {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.background-image {
     background-image: url("img/9.Intro _ Outro Image/Start Screen/Opcion2.png");
-    background-size: cover;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: 720px 480px;
+    background-color:#6f3019;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
 }
 
-button {
-    margin-top: 50px;
-    width: 10%;
-    height: 5%;
-    font-size: 20px;
-    background-color: #fde04c;
-    border-radius: 10px;
+#start, #game-over {
+    font-family: Arial, Helvetica, sans-serif;
+    position: fixed;
+    top: 8%;
+    text-align: center;
 }
+
+#start button, #game-over button {
+    border-style: solid;
+    border-color: #9b4747;;  
+    border-width: 2px 4px 2px 2px;
+    border-radius: 10px;
+    padding: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #f9cc48;
+    font-size: 2em;
+    color: #6e2929;
+    display: block;
+    display: inline-block;
+}
+
+#start button:hover, #game-over button:hover {
+    background-color: #ffe69b;
+    color: #8c4242;
+}
+
+#info {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    flex-wrap: wrap;
+    top: 19%;
+    font-size: 25px;
+    flex-direction: column;
+    background-color: #f9cc48;
+    color: #6e2929;
+    border-radius: 10px;
+    position: fixed;
+    left: 5%;
+    bottom: 50%;
+    padding: 10px;
+    height: 420px;
+    width: 200px;
+    text-align: center;
+}
+
 
 canvas {
     background-color: black;
-    margin-top: 100;
-}
-
-.show-canvas {
-    z-index: 3;
+    z-index: 5;
+    margin-top: 100px;
 }
 
 .d-none {

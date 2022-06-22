@@ -9,8 +9,8 @@ class World {
     coinBar = new CoinBar();
     bottleBar = new BottleBar();
     throwableObjects = [];
-    //endbossInArr = this.level.enemies.length - 1;
     endboss = this.level.enemies.find(e => e instanceof Endboss);
+    chicken = this.level.enemies.find(e => e instanceof Chicken);
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -25,6 +25,7 @@ class World {
     setWorld() {
         this.character.world = this;
         this.endboss.world = this;
+        this.chicken.world = this;
     }
 
     animate() {
@@ -65,6 +66,14 @@ class World {
 
     endbossIsInSight() {
         if (this.endboss.x - (this.character.x + this.character.width) < 200) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    chickenIsInSight() {
+        if (this.chicken.x - (this.character.x + this.character.width) < 650) {
             return true;
         } else {
             return false;
