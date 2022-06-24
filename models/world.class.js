@@ -77,8 +77,9 @@ class World {
         this.level.enemies.forEach((enemie) => {
             if (enemie instanceof Chicken && enemie.x - (this.character.x + this.character.width) < 200 ) {
                 enemie.inSight = true;
-            } 
-            else {
+            } /*else if (enemie instanceof Chicken && enemie.x - (this.character.x + this.character.width) < -200 ) {
+                enemie.inSight = false;
+            }*/ else {
                 enemie.inSight = false;
             }
         });
