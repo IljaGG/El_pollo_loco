@@ -44,6 +44,7 @@ class World {
             this.checkThrowObjects();
             this.checkCoinCollisions();
             this.checkBottleCollisions();
+            this.chickenIsInSight();
         }, 1000 / 25);
     }
 
@@ -73,11 +74,14 @@ class World {
     }
 
     chickenIsInSight() {
-        if (this.chicken.x - (this.character.x + this.character.width) < 650) {
-            return true;
-        } else {
-            return false;
-        }
+        this.level.enemies.forEach((enemie) => {
+            if (enemie instanceof Chicken && enemie.x - (this.character.x + this.character.width) < 200 ) {
+                enemie.inSight = true;
+            } 
+            else {
+                enemie.inSight = false;
+            }
+        });
     }
 
     checkCoinCollisions() {

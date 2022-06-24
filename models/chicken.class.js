@@ -1,5 +1,6 @@
 class Chicken extends MovableObject{
     
+    inSight = false;
 
     IMAGES_WALKING = [
         'img/3.Secuencias_Enemy_bsico/Version_Gallinita_estas_salen_por_orden_de_la_gallina_gigantona/1.Ga_paso_derecho.png',
@@ -15,7 +16,7 @@ class Chicken extends MovableObject{
         bottom: 5
     };
 
-    chicken_sound = new Audio('audio/cicken_walk.mp3');
+    chicken_sound = new Audio('audio/chicken_sound.mp3');
 
     constructor() {
         super().loadImage('img/3.Secuencias_Enemy_bsico/Version_Gallinita_estas_salen_por_orden_de_la_gallina_gigantona/1.Ga_paso_derecho.png');
@@ -31,11 +32,12 @@ class Chicken extends MovableObject{
     animate() {
         setInterval(() => {
             this.chicken_sound.pause();
-            if (this.world.chickenIsInSight() == true) {
+            if (this.inSight == true) {
             this.moveLeft();
             this.chicken_sound.play();
-        } else if (this.world.chickenIsInSight() == false) {
+        } else if (this.inSight == false) {
             this.moveLeft();
+            
         }
         }, 1000 / 60);
         
