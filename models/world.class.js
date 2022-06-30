@@ -49,10 +49,14 @@ class World {
     }
 
     checkThrowObjects() {
-        if (this.keyboard.D) {
+
+        if (this.keyboard.D && this.bottleBar.bottlesAmmount > 0) {
             let bottle = new ThrowableObject(this.character.x + 50, this.character.y + 100);
             this.throwableObjects.push(bottle);
+            this.bottleBar.bottlesAmmount --;
+            this.keyboard.D = false;
         }
+
     }
 
     checkCollisions() {
@@ -75,12 +79,10 @@ class World {
 
     chickenIsInSight() {
         this.level.enemies.forEach((enemie) => {
-            if (enemie instanceof Chicken && enemie.x - (this.character.x + this.character.width) < 200 ) {
+            if (enemie instanceof Chicken && enemie.x - (this.character.x + this.character.width) < 200) {
                 enemie.inSight = true;
-            } 
-           if (enemie instanceof Chicken && (enemie.x + enemie.width) - this.character.x < -200) {
-                enemie.inSight = false;
-            } else {
+            }
+            if (enemie instanceof Chicken && (enemie.x + enemie.width) - this.character.x < -200) {
                 enemie.inSight = false;
             }
         });
@@ -100,7 +102,7 @@ class World {
         this.level.bottles.forEach((bottle, index) => {
             if (this.character.isColliding(bottle)) {
                 this.character.collectBottle();
-                this.bottleBar.setBottleAmmount(this.character.bottleAmmount);
+                this.bottleBar.setBottleAmmount(this.bottleBar.bottlesAmmount);
                 this.level.bottles.splice(index, 1);
             }
         });

@@ -31,11 +31,11 @@ class Chicken extends MovableObject{
 
     animate() {
         setInterval(() => {
-            this.chicken_sound.pause();
             if (this.inSight == true) {
             this.moveLeft();
             this.chicken_sound.play();
         } else if (this.inSight == false) {
+            this.chicken_sound.pause();
             this.moveLeft();
             
         }

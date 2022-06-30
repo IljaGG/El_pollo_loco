@@ -7,6 +7,8 @@ class ThrowableObject extends MovableObject {
        'img/6.botella/Rotacien/Mesa de trabajo 1 copia 6.png'
    ];
 
+  
+
     constructor(x, y) {
         super().loadImage('img/6.botella/Rotacien/Mesa de trabajo 1 copia 3.png');
         this.loadImages(this.IMAGES);
