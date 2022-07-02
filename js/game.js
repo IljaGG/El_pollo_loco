@@ -11,15 +11,13 @@ function init() {
 }
 
 function startGame() {
-    let startDiv = document.getElementById('start');
+    let startImage = document.getElementById('start-wrapper')
     let startButton = document.getElementById('start-btn');
     let gameCanvas = document.getElementById('canvas');
-    let gameOver = document.getElementById('game-over');
-    startDiv.style.display = 'display:none';
+    startImage.classList.add('d-none');
     startButton.classList.add('d-none');
     startButton.blur();
-    gameCanvas.style.display = 'block';
-    gameOver.style.display = 'display:none';
+    gameCanvas.classList.remove('d-none');
     init();
 }
 

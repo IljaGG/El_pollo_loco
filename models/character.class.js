@@ -121,11 +121,11 @@ class Character extends MovableObject {
                 this.playAnimation(this.IMAGES_JUMPING);
             }
         }, 130);
-
-
         let gameInProgressInterval = setInterval(() => {
             if (this.isDead()) {
+                this.gameOverImg();
                 this.playAnimation(this.IMAGES_DEAD);
+                
                 setTimeout(() => {
                     this.gameOver();
                     clearInterval(gameInProgressInterval);
@@ -145,12 +145,19 @@ class Character extends MovableObject {
 
 
     gameOver() {
-        let startDiv = document.getElementById('start');
+        let startImage = document.getElementById('start-wrapper')
+        let startButton = document.getElementById('start-btn');
         let gameCanvas = document.getElementById('canvas');
-        let gameOver = document.getElementById('game-over');
-        startDiv.style.display = 'none';
-        gameCanvas.style.display = 'none';
-        gameOver.style.display = 'block';
+        let gameOverImg = document.getElementById('game-over-wrapper');
+        gameOverImg.classList.add('d-none');
+        startImage.classList.remove('d-none');
+        startButton.classList.remove('d-none');
+        startButton.focus();
+        gameCanvas.classList.add('d-none');
     }
 
+    gameOverImg() {
+        let gameOverImg = document.getElementById('game-over-wrapper');
+        gameOverImg.classList.remove('d-none');
+    }
 }

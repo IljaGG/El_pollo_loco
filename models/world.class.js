@@ -53,7 +53,8 @@ class World {
         if (this.keyboard.D && this.bottleBar.bottlesAmmount > 0) {
             let bottle = new ThrowableObject(this.character.x + 50, this.character.y + 100);
             this.throwableObjects.push(bottle);
-            this.bottleBar.bottlesAmmount --;
+            this.character.bottleAmmount --;
+            this.bottleBar.setBottleAmmount(this.character.bottleAmmount);
             this.keyboard.D = false;
         }
 
@@ -102,7 +103,7 @@ class World {
         this.level.bottles.forEach((bottle, index) => {
             if (this.character.isColliding(bottle)) {
                 this.character.collectBottle();
-                this.bottleBar.setBottleAmmount(this.bottleBar.bottlesAmmount);
+                this.bottleBar.setBottleAmmount(this.character.bottleAmmount);
                 this.level.bottles.splice(index, 1);
             }
         });
