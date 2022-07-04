@@ -34,6 +34,7 @@ class Chicken extends MovableObject{
             if (this.inSight == true) {
             this.moveLeft();
             this.chicken_sound.play();
+            this.chicken_sound.volume = 0.2;
         } else if (this.inSight == false) {
             this.chicken_sound.pause();
             this.moveLeft();

@@ -45,6 +45,7 @@ class World {
             this.checkCoinCollisions();
             this.checkBottleCollisions();
             this.chickenIsInSight();
+            this.checkJumpHitCollision();
         }, 1000 / 25);
     }
 
@@ -63,10 +64,20 @@ class World {
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
-                this.character.hit();
+                //this.character.hit();
                 this.statusBar.setPercentage(this.character.energy);
             }
         });
+    }
+
+    checkJumpHitCollision() {
+       if (this.character.isAboveGround() && this.character.y + this.character.height - this.character.offset.bottom > 
+       this.chicken.y + this.chicken.offset.top
+       && this.character.x + this.character.width - this.character.offset.right > 
+       this.chicken.x - this.chicken.offset.left) 
+       {
+        console.log('HIT THE CHICKEN!')
+       }
     }
 
 

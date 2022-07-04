@@ -43,9 +43,9 @@ button {
     z-index: 1;
 }
 
-.game-over-wrapper {
+#game-over-wrapper {
     position: absolute;
-    z-index: 100;
+    top: -1px;
 }
 
 .game-over-wrapper img {

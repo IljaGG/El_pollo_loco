@@ -74,6 +74,7 @@ class Character extends MovableObject {
 
     world;
     walking_sound = new Audio('audio/walk.mp3');
+    
     jump_sound = new Audio('audio/jump.mp3');
 
     constructor() {
@@ -128,6 +129,7 @@ class Character extends MovableObject {
                 
                 setTimeout(() => {
                     this.gameOver();
+                    this.reload();
                     clearInterval(gameInProgressInterval);
                 }, 3000);
 
@@ -159,5 +161,9 @@ class Character extends MovableObject {
     gameOverImg() {
         let gameOverImg = document.getElementById('game-over-wrapper');
         gameOverImg.classList.remove('d-none');
+    }
+
+    reload() {
+        window.location = 'index.html';
     }
 }
