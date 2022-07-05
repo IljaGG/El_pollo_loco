@@ -1,5 +1,5 @@
-class Chicken extends MovableObject{
-    
+class Chicken extends MovableObject {
+
     inSight = false;
 
     IMAGES_WALKING = [
@@ -13,6 +13,8 @@ class Chicken extends MovableObject{
     ];
 
     world;
+
+    hitOnHead = false;
 
     offset = {
         top: 5,
@@ -30,27 +32,27 @@ class Chicken extends MovableObject{
         this.y = 355;
         this.width = 55;
         this.height = 70;
-        
-        this.speed = 0.25 + Math.random() * 0.25; 
+
+        this.speed = 0.25 + Math.random() * 0.25;
     }
 
     animate() {
         setInterval(() => {
-            if (this.world.checkChickenTopCollision() == true) {
+            if (this.hitOnHead = true) {
                 this.playAnimation(this.CHICKEN_DEAD);
             }
             if (this.inSight == true) {
-            this.moveLeft();
-            this.chicken_sound.play();
-            this.chicken_sound.volume = 0.2;
-        } else if (this.inSight == false) {
-            this.chicken_sound.pause();
-            this.moveLeft();
-            
-        }
+                this.moveLeft();
+                this.chicken_sound.play();
+                this.chicken_sound.volume = 0.2;
+            } else if (this.inSight == false) {
+                this.chicken_sound.pause();
+                this.moveLeft();
+
+            }
         }, 1000 / 60);
-        
-        
+
+
         setInterval(() => {
             this.playAnimation(this.IMAGES_WALKING);
         }, 120);

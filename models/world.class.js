@@ -47,7 +47,6 @@ class World {
             this.checkBottleCollisions();
             this.chickenIsInSight();
             this.endbossIsInSightHealthBar();
-            this.checkChickenTopCollision();
         }, 1000 / 25);
     }
 
@@ -56,7 +55,7 @@ class World {
         if (this.keyboard.D && this.bottleBar.bottlesAmmount > 0) {
             let bottle = new ThrowableObject(this.character.x + 50, this.character.y + 100);
             this.throwableObjects.push(bottle);
-            this.character.bottleAmmount --;
+            this.character.bottleAmmount--;
             this.bottleBar.setBottleAmmount(this.character.bottleAmmount);
             this.keyboard.D = false;
         }
@@ -66,8 +65,11 @@ class World {
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
-                //this.character.hit();
+                this.character.hit();
                 this.statusBar.setPercentage(this.character.energy);
+            }
+            if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
+             this.chicken.hitOnHead = true;
             }
         });
     }
@@ -100,12 +102,6 @@ class World {
         });
     }
 
-    checkChickenTopCollision() {
-       if (this.character.isColliding(this.level.enemies) && this.character.isAboveGround()) {
-        return true;
-       };
-    }
-
     checkCoinCollisions() {
         this.level.coins.forEach((coin, index) => {
             if (this.character.isColliding(coin)) {
@@ -115,6 +111,7 @@ class World {
             }
         });
     }
+
 
     checkBottleCollisions() {
         this.level.bottles.forEach((bottle, index) => {
