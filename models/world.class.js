@@ -8,6 +8,7 @@ class World {
     statusBar = new StatusBar();
     coinBar = new CoinBar();
     bottleBar = new BottleBar();
+    endbossHealthBar = new EndbossHealthBar();
     throwableObjects = [];
     endboss = this.level.enemies.find(e => e instanceof Endboss);
     chicken = this.level.enemies.find(e => e instanceof Chicken);
@@ -36,7 +37,7 @@ class World {
     runCharacter() {
         setInterval(() => {
             this.checkCollisions();
-        }, 200);
+        }, 100);
     }
 
     run() {
@@ -45,7 +46,8 @@ class World {
             this.checkCoinCollisions();
             this.checkBottleCollisions();
             this.chickenIsInSight();
-            this.checkJumpHitCollision();
+            this.endbossIsInSightHealthBar();
+            this.checkChickenTopCollision();
         }, 1000 / 25);
     }
 
@@ -70,19 +72,17 @@ class World {
         });
     }
 
-    checkJumpHitCollision() {
-       if (this.character.isAboveGround() && this.character.y + this.character.height - this.character.offset.bottom > 
-       this.chicken.y + this.chicken.offset.top
-       && this.character.x + this.character.width - this.character.offset.right > 
-       this.chicken.x - this.chicken.offset.left) 
-       {
-        console.log('HIT THE CHICKEN!')
-       }
-    }
-
 
     endbossIsInSight() {
         if (this.endboss.x - (this.character.x + this.character.width) < 200) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    endbossIsInSightHealthBar() {
+        if (this.endboss.x - (this.character.x + this.character.width) < 1200) {
             return true;
         } else {
             return false;
@@ -98,6 +98,12 @@ class World {
                 enemie.inSight = false;
             }
         });
+    }
+
+    checkChickenTopCollision() {
+       if (this.character.isColliding(this.level.enemies) && this.character.isAboveGround()) {
+        return true;
+       };
     }
 
     checkCoinCollisions() {
@@ -141,6 +147,7 @@ class World {
         this.addToMap(this.statusBar);
         this.addToMap(this.coinBar);
         this.addToMap(this.bottleBar);
+        this.addToMap(this.endbossHealthBar);
         this.ctx.translate(this.camera_x, 0);
 
         this.ctx.translate(-this.camera_x, 0);

@@ -42,21 +42,24 @@ class Endboss extends MovableObject {
     animate() {
 
         setInterval(() => {
+           // if (this.world.endbossIsInSightHealthBar() == true) {
+           //     this.showHealthBar();
+           // }
 
-        if (this.world.endbossIsInSight() == true) {
-            
+            if (this.world.endbossIsInSight() == true) {
+
                 this.playAnimation(this.IMAGES_ALERT);
-        
-        } else {
-            this.playAnimation(this.IMAGES_WALKING);    
-        }
-    }, 200);
 
-    setInterval(() => {
-        if (this.world.endbossIsInSight() == false) {
-        this.moveLeft();
-    }
-    }, 1000 / 60)
+            } else {
+                this.playAnimation(this.IMAGES_WALKING);
+            }
+        }, 200);
+
+        setInterval(() => {
+            if (this.world.endbossIsInSight() == false) {
+                this.moveLeft();
+            }
+        }, 1000 / 60)
     }
 
 }

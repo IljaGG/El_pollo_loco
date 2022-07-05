@@ -7,6 +7,11 @@ class Chicken extends MovableObject{
         'img/3.Secuencias_Enemy_bsico/Version_Gallinita_estas_salen_por_orden_de_la_gallina_gigantona/2-Ga_centro.png',
         'img/3.Secuencias_Enemy_bsico/Version_Gallinita_estas_salen_por_orden_de_la_gallina_gigantona/3.Ga_paso izquierdo.png'
     ];
+
+    CHICKEN_DEAD = [
+        'img/3.Secuencias_Enemy_bsico/Version_Gallinita_estas_salen_por_orden_de_la_gallina_gigantona/4.G_muerte.png'
+    ];
+
     world;
 
     offset = {
@@ -31,6 +36,9 @@ class Chicken extends MovableObject{
 
     animate() {
         setInterval(() => {
+            if (this.world.checkChickenTopCollision() == true) {
+                this.playAnimation(this.CHICKEN_DEAD);
+            }
             if (this.inSight == true) {
             this.moveLeft();
             this.chicken_sound.play();
