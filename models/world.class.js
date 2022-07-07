@@ -10,6 +10,7 @@ class World {
     bottleBar = new BottleBar();
     endbossHealthBar = new EndbossHealthBar();
     throwableObjects = [];
+    thrownBottle = new ThrowableObject();
     endboss = this.level.enemies.find(e => e instanceof Endboss);
     chicken = this.level.enemies.filter(e => e instanceof Chicken);
 
@@ -27,6 +28,7 @@ class World {
         this.character.world = this;
         this.endboss.world = this;
         this.chicken.forEach(c => c.world = this);
+        this.thrownBottle.world = this;
     }
 
     animate() {
@@ -37,6 +39,7 @@ class World {
     runCharacter() {
         setInterval(() => {
             this.checkCollisions();
+            this.bottleCollideWithEndboss();
         }, 100);
     }
 
@@ -81,6 +84,12 @@ class World {
         return !enemy.isDead() && !this.character.isHurt() && this.character.isColliding(enemy);
     }
 
+    bottleCollideWithEndboss() {
+        if (this.thrownBottle.isColliding(this.endboss)) {
+            this.endboss.hit();
+        }
+    }
+
     checkCoinCollisions() {
         this.level.coins.forEach((coin, index) => {
             if (this.character.isColliding(coin)) {
@@ -91,6 +100,15 @@ class World {
         });
     }
 
+    checkBottleCollisions() {
+        this.level.bottles.forEach((bottle, index) => {
+            if (this.character.isColliding(bottle)) {
+                this.character.collectBottle();
+                this.bottleBar.setBottleAmmount(this.character.bottleAmmount);
+                this.level.bottles.splice(index, 1);
+            }
+        });
+    }
 
     endbossIsInSight() {
         if (this.endboss.x - (this.character.x + this.character.width) < 200) {
@@ -106,16 +124,6 @@ class World {
         } else {
             return false;
         }
-    }
-
-    checkBottleCollisions() {
-        this.level.bottles.forEach((bottle, index) => {
-            if (this.character.isColliding(bottle)) {
-                this.character.collectBottle();
-                this.bottleBar.setBottleAmmount(this.character.bottleAmmount);
-                this.level.bottles.splice(index, 1);
-            }
-        });
     }
 
 
