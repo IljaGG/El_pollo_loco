@@ -37,7 +37,6 @@ class World {
     runCharacter() {
         setInterval(() => {
             this.checkCollisions();
-            //this.checkHeadCollision();
         }, 100);
     }
 
@@ -62,31 +61,24 @@ class World {
 
     }
 
-   /* checkCollisions() {
+    checkCollisions() {
         this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy)) {
+            this.checkCharacterEnemyCollision(enemy);
+        });
+    }
+
+    checkCharacterEnemyCollision(enemy) {
+        if (this.validateCharacterEnemyCollision(enemy))
+            if (this.character.isAboveGround())
+                enemy.kill();
+            else {
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energy);
             }
-        });
-    }*/
+    }
 
-    //in CheckCollision einbauen
-    checkCollisions() {
-        this.level.enemies.forEach((enemy) => {
-            if (!enemy.isDead() && !this.character.isHurt()) {
-                if (this.character.isColliding(enemy)) {
-                    if (this.character.isAboveGround()) {
-                        enemy.kill();
-                    }
-                }
-            } else {
-                if (this.character.isColliding(enemy)) {
-                    this.character.hit();
-                    this.statusBar.setPercentage(this.character.energy);
-                }
-            }
-        });
+    validateCharacterEnemyCollision(enemy) {
+        return !enemy.isDead() && !this.character.isHurt() && this.character.isColliding(enemy);
     }
 
     checkCoinCollisions() {
