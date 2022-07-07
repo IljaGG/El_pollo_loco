@@ -17,8 +17,8 @@ class ThrowableObject extends MovableObject {
     ];
 
     world;
-    
 
+    breaked = false;
 
 
     constructor(x, y) {
@@ -29,24 +29,22 @@ class ThrowableObject extends MovableObject {
         this.y = y;
         this.width = 65;
         this.height = 70;
-        this.throw(100, 180);
+        this.speedY = 25;
+        this.applyGravity();
+        this.throw();
     }
 
     throw() {
-        if (this.world.endboss.hit()) {
-            setInterval(() => {
-                this.playAnimation(this.IMAGES_SPLASH);
-            }, 100);
-        } else {
-            this.speedY = 25;
-            this.applyGravity();
-            setInterval(() => {
-                this.x += 10;
-            }, 30);
-            setInterval(() => {
-                this.playAnimation(this.IMAGES);
-            }, 100);
-        }
+        setInterval(() => {
+            if (this.breaked)
+            this.playAnimation(this.IMAGES_SPLASH);
+            else
+            this.playAnimation(this.IMAGES);
+        }, 100);
+
+        setInterval(() => {
+            this.x += 10;
+        }, 30);
     }
 
 }

@@ -10,7 +10,7 @@ class World {
     bottleBar = new BottleBar();
     endbossHealthBar = new EndbossHealthBar();
     throwableObjects = [];
-    thrownBottle = new ThrowableObject();
+    //thrownBottle = new ThrowableObject();
     endboss = this.level.enemies.find(e => e instanceof Endboss);
     chicken = this.level.enemies.filter(e => e instanceof Chicken);
 
@@ -28,7 +28,6 @@ class World {
         this.character.world = this;
         this.endboss.world = this;
         this.chicken.forEach(c => c.world = this);
-        this.thrownBottle.world = this;
     }
 
     animate() {
@@ -39,7 +38,9 @@ class World {
     runCharacter() {
         setInterval(() => {
             this.checkCollisions();
-            this.bottleCollideWithEndboss();
+            this.throwableObjects.forEach(bottle => {
+                this.bottleCollideWithEndboss(bottle);
+            })
         }, 100);
     }
 
@@ -84,9 +85,10 @@ class World {
         return !enemy.isDead() && !this.character.isHurt() && this.character.isColliding(enemy);
     }
 
-    bottleCollideWithEndboss() {
-        if (this.thrownBottle.isColliding(this.endboss)) {
+    bottleCollideWithEndboss(bottle) {
+        if (!bottle.breaked && bottle.isColliding(this.endboss)) {
             this.endboss.hit();
+            bottle.breaked = true;
         }
     }
 
