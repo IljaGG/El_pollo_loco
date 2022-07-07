@@ -14,8 +14,6 @@ class Chicken extends MovableObject {
 
     world;
 
-    hitOnHead = false;
-
     offset = {
         top: 5,
         left: 5,
@@ -28,6 +26,7 @@ class Chicken extends MovableObject {
     constructor() {
         super().loadImage('img/3.Secuencias_Enemy_bsico/Version_Gallinita_estas_salen_por_orden_de_la_gallina_gigantona/1.Ga_paso_derecho.png');
         this.loadImages(this.IMAGES_WALKING);
+        this.loadImages(this.CHICKEN_DEAD);
         this.x = 200 + Math.random() * 5752;
         this.y = 355;
         this.width = 55;
@@ -38,23 +37,17 @@ class Chicken extends MovableObject {
 
     animate() {
         setInterval(() => {
-            if (this.hitOnHead = true) {
-                this.playAnimation(this.CHICKEN_DEAD);
-            }
-            if (this.inSight == true) {
-                this.moveLeft();
-                this.chicken_sound.play();
-                this.chicken_sound.volume = 0.2;
-            } else if (this.inSight == false) {
-                this.chicken_sound.pause();
-                this.moveLeft();
-
-            }
+            this.moveLeft();
         }, 1000 / 60);
 
 
         setInterval(() => {
-            this.playAnimation(this.IMAGES_WALKING);
+            if (this.isDead()) {
+                this.playAnimation(this.CHICKEN_DEAD);
+            } else {
+                this.playAnimation(this.IMAGES_WALKING);
+            }
+
         }, 120);
 
     }

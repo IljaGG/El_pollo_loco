@@ -11,7 +11,7 @@ class World {
     endbossHealthBar = new EndbossHealthBar();
     throwableObjects = [];
     endboss = this.level.enemies.find(e => e instanceof Endboss);
-    chicken = this.level.enemies.find(e => e instanceof Chicken);
+    chicken = this.level.enemies.filter(e => e instanceof Chicken);
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -26,7 +26,7 @@ class World {
     setWorld() {
         this.character.world = this;
         this.endboss.world = this;
-        this.chicken.world = this;
+        this.chicken.forEach(c => c.world = this);
     }
 
     animate() {
@@ -37,6 +37,7 @@ class World {
     runCharacter() {
         setInterval(() => {
             this.checkCollisions();
+            //this.checkHeadCollision();
         }, 100);
     }
 
@@ -45,7 +46,6 @@ class World {
             this.checkThrowObjects();
             this.checkCoinCollisions();
             this.checkBottleCollisions();
-            this.chickenIsInSight();
             this.endbossIsInSightHealthBar();
         }, 1000 / 25);
     }
@@ -62,14 +62,39 @@ class World {
 
     }
 
-    checkCollisions() {
+   /* checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energy);
             }
-            if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
-             this.chicken.hitOnHead = true;
+        });
+    }*/
+
+    //in CheckCollision einbauen
+    checkCollisions() {
+        this.level.enemies.forEach((enemy) => {
+            if (!enemy.isDead() && !this.character.isHurt()) {
+                if (this.character.isColliding(enemy)) {
+                    if (this.character.isAboveGround()) {
+                        enemy.kill();
+                    }
+                }
+            } else {
+                if (this.character.isColliding(enemy)) {
+                    this.character.hit();
+                    this.statusBar.setPercentage(this.character.energy);
+                }
+            }
+        });
+    }
+
+    checkCoinCollisions() {
+        this.level.coins.forEach((coin, index) => {
+            if (this.character.isColliding(coin)) {
+                this.character.collectCoin();
+                this.coinBar.setCoinAmmount(this.character.coinAmmount);
+                this.level.coins.splice(index, 1);
             }
         });
     }
@@ -90,28 +115,6 @@ class World {
             return false;
         }
     }
-
-    chickenIsInSight() {
-        this.level.enemies.forEach((enemie) => {
-            if (enemie instanceof Chicken && enemie.x - (this.character.x + this.character.width) < 200) {
-                enemie.inSight = true;
-            }
-            if (enemie instanceof Chicken && (enemie.x + enemie.width) - this.character.x < -200) {
-                enemie.inSight = false;
-            }
-        });
-    }
-
-    checkCoinCollisions() {
-        this.level.coins.forEach((coin, index) => {
-            if (this.character.isColliding(coin)) {
-                this.character.collectCoin();
-                this.coinBar.setCoinAmmount(this.character.coinAmmount);
-                this.level.coins.splice(index, 1);
-            }
-        });
-    }
-
 
     checkBottleCollisions() {
         this.level.bottles.forEach((bottle, index) => {

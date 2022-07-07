@@ -77,6 +77,10 @@ class MovableObject extends DrawableObject {
         return this.energy == 0;
     }
 
+    kill() {
+        this.energy = 0;
+    }
+
     checkCharacterMoving() {
         if (this.world.keyboard.LEFT || this.world.keyboard.RIGHT || this.world.keyboard.D || this.isAboveGround()) {
             this.lastAction = new Date().getTime();
