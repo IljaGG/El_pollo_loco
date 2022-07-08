@@ -37,4 +37,12 @@ class DrawableObject {
         });
     }
 
+    endbossIsInSightHealthBar() {
+        if (this.endboss.x - (this.character.x + this.character.width) < 1200) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

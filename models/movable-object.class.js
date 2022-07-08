@@ -12,6 +12,13 @@ class MovableObject extends DrawableObject {
     lastAction = 0;
     characterIsMoving = false;
 
+    offset = {
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0
+    };
+
     applyGravity() {
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {

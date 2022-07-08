@@ -88,6 +88,7 @@ class World {
     bottleCollideWithEndboss(bottle) {
         if (!bottle.breaked && bottle.isColliding(this.endboss)) {
             this.endboss.hit();
+            this.endbossHealthBar.setPercentage(this.endboss.energy);
             bottle.breaked = true;
         }
     }

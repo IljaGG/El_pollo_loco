@@ -1,18 +1,18 @@
 class CoinBar extends DrawableObject {
 
     IMAGES_COIN_BAR = [
-        'img/7.Marcadores/Barra/Marcador moneda/Naranja/0_.png',
-        'img/7.Marcadores/Barra/Marcador moneda/Naranja/20_ .png',
-        'img/7.Marcadores/Barra/Marcador moneda/Naranja/40_.png',
-        'img/7.Marcadores/Barra/Marcador moneda/Naranja/60_.png',
-        'img/7.Marcadores/Barra/Marcador moneda/Naranja/80__1.png',
-        'img/7.Marcadores/Barra/Marcador moneda/Naranja/100__1.png'
+        'img/7.Marcadores/Barra/Marcador moneda/Verde/0_.png',
+        'img/7.Marcadores/Barra/Marcador moneda/Verde/20_  copia.png',
+        'img/7.Marcadores/Barra/Marcador moneda/Verde/40_  copia 2.png',
+        'img/7.Marcadores/Barra/Marcador moneda/Verde/60_  copia 2.png',
+        'img/7.Marcadores/Barra/Marcador moneda/Verde/80_  copia 2.png',
+        'img/7.Marcadores/Barra/Marcador moneda/Verde/0_  copia 2.png'
     ];
 
     coinsAmmount = 0;
 
     constructor() {
-        super().loadImage('img/7.Marcadores/Barra/Marcador moneda/Naranja/0_.png');
+        super().loadImage('img/7.Marcadores/Barra/Marcador moneda/Verde/0_.png');
         this.loadImages(this.IMAGES_COIN_BAR);
         this.x = 60;
         this.y = 60;
