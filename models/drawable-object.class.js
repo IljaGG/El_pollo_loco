@@ -1,5 +1,7 @@
 class DrawableObject {
 
+    drawable = true;
+
     x = 120;
     y = 180;
     width = 130;
@@ -35,14 +37,6 @@ class DrawableObject {
             img.src = path;
             this.imageCache[path] = img;
         });
-    }
-
-    endbossIsInSightHealthBar() {
-        if (this.endboss.x - (this.character.x + this.character.width) < 1200) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
 }

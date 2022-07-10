@@ -30,10 +30,24 @@ class Endboss extends MovableObject {
         'img/4.Secuencias_Enemy_giganton-Dosa_Gallinota-/2.Atecion-ataque/1.Alerta/G12.png'
     ];
 
+    IMAGES_ANGRY = [
+        'img/4.Secuencias_Enemy_giganton-Dosa_Gallinota-/3.Herida/G21.png',
+        'img/4.Secuencias_Enemy_giganton-Dosa_Gallinota-/3.Herida/G22.png',
+        'img/4.Secuencias_Enemy_giganton-Dosa_Gallinota-/3.Herida/G23.png'
+    ];
+
+    IMAGES_DEAD = [
+        'img/4.Secuencias_Enemy_giganton-Dosa_Gallinota-/4.Muerte/G24.png',
+        'img/4.Secuencias_Enemy_giganton-Dosa_Gallinota-/4.Muerte/G25.png',
+        'img/4.Secuencias_Enemy_giganton-Dosa_Gallinota-/4.Muerte/G26.png'
+    ]
+
     constructor() {
         super().loadImage(this.IMAGES_WALKING[0]);
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_ALERT);
+        this.loadImages(this.IMAGES_ANGRY);
+        this.loadImages(this.IMAGES_DEAD);
         this.x = 6500;
 
     }
@@ -42,11 +56,21 @@ class Endboss extends MovableObject {
     animate() {
 
         setInterval(() => {
-           // if (this.world.endbossIsInSightHealthBar() == true) {
-           //     this.showHealthBar();
-           // }
+            if (this.isDead()) {
+                this.playAnimation(this.IMAGES_DEAD);
+                setTimeout (() => {
+                    this.youWonImg();
+                }, 2000);
+                setTimeout (() => {
+                    this.reload();
+                }, 4000);
+                
+            }
+            else if (this.isHurt()) {
+                this.playAnimation(this.IMAGES_ANGRY);
+            }
 
-            if (this.world.endbossIsInSight() == true) {
+            else if (this.world.endbossIsInSight() == true) {
 
                 this.playAnimation(this.IMAGES_ALERT);
 
@@ -62,5 +86,29 @@ class Endboss extends MovableObject {
         }, 1000 / 60)
     }
 
+
+
+  /* youWon() {
+        let startImage = document.getElementById('start-wrapper')
+        let startButton = document.getElementById('start-btn');
+        let gameCanvas = document.getElementById('canvas');
+        
+        startImage.classList.remove('d-none');
+        startButton.classList.remove('d-none');
+        startButton.focus();
+        gameCanvas.classList.add('d-none');
+    }*/
+
+    youWonImg() {
+        let youWonImg = document.getElementById('you-won-wrapper');
+        let youWonImgBackground = document.getElementById('you-won-wrapper-background');
+        youWonImg.classList.remove('d-none');
+        youWonImgBackground.classList.remove('d-none');
+    }
+
+    reload() {
+        window.location = 'index.html';
+    }
 }
+
 

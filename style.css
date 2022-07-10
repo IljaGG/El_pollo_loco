@@ -48,6 +48,23 @@ button {
     top: -1px;
 }
 
+#you-won-wrapper {
+    position: absolute;
+    font-size: 200px;
+    color: #f9cc48;
+    text-align: center;
+    width: 720px;
+    height: 480px;
+}
+
+#you-won-wrapper-background {
+    position: absolute;
+    background-color: black;
+    opacity: 0.5;
+    width: 720px;
+    height: 480px;
+}
+
 .game-over-wrapper img {
     z-index: 100;
 }

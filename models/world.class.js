@@ -10,7 +10,6 @@ class World {
     bottleBar = new BottleBar();
     endbossHealthBar = new EndbossHealthBar();
     throwableObjects = [];
-    //thrownBottle = new ThrowableObject();
     endboss = this.level.enemies.find(e => e instanceof Endboss);
     chicken = this.level.enemies.filter(e => e instanceof Chicken);
 
@@ -122,10 +121,8 @@ class World {
     }
 
     endbossIsInSightHealthBar() {
-        if (this.endboss.x - (this.character.x + this.character.width) < 1200) {
-            return true;
-        } else {
-            return false;
+        if (this.endboss.x - (this.character.x + this.character.width) < 1200 && !this.endbossHealthBar.drawable) {
+           this.endbossHealthBar.drawable = true;
         }
     }
 
@@ -171,17 +168,19 @@ class World {
 
 
     addToMap(mo) {
-        if (mo.otherDirection) {
-            this.flipImage(mo);
-        }
+        if (mo.drawable) {
+            if (mo.otherDirection) {
+                this.flipImage(mo);
+            }
 
-        mo.draw(this.ctx);
+            mo.draw(this.ctx);
 
-        //border
-        mo.drawFrame(this.ctx);
-        //border
-        if (mo.otherDirection) {
-            this.flipImageBack(mo);
+            //border
+            mo.drawFrame(this.ctx);
+            //border
+            if (mo.otherDirection) {
+                this.flipImageBack(mo);
+            }
         }
     }
 

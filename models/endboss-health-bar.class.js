@@ -15,6 +15,7 @@ class EndbossHealthBar extends DrawableObject {
         
             super().loadImage('img/7.Marcadores/Barra/Marcador vida/Naranja/0_ .png');
             this.loadImages(this.IMAGES);
+            this.drawable = false;
             this.x = 470;
             this.y = 20;
             this.width = 190;
