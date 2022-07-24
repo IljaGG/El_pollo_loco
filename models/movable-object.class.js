@@ -96,9 +96,9 @@ class MovableObject extends DrawableObject {
     }
 
     restOrSleepAnimation() {
-        if (this.timeNow - this.lastAction > 8000) {
+        if (this.timeNow - this.lastAction > 10000) {
             this.playAnimation(this.IMAGES_SLEEPING);
-        } else if (this.timeNow - this.lastAction > 4000) {
+        } else if (this.timeNow - this.lastAction > 6000) {
             this.playAnimation(this.IMAGES_BORED);
         }
     }

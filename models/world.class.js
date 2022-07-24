@@ -21,6 +21,7 @@ class World {
         this.setWorld();
         this.runCharacter();
         this.run();
+        this.touchButtons();
     }
 
     setWorld() {
@@ -67,6 +68,7 @@ class World {
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             this.checkCharacterEnemyCollision(enemy);
+
         });
     }
 
@@ -195,5 +197,47 @@ class World {
     flipImageBack(mo) {
         mo.x = mo.x * -1;
         this.ctx.restore();
+    }
+
+    touchButtons() {
+        document.getElementById('button-right').addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            this.keyboard.RIGHT = true;
+        });
+        
+        document.getElementById('button-right').addEventListener('touchend', (e) => {
+            e.preventDefault();
+            this.keyboard.RIGHT = false;
+        });
+        
+        document.getElementById('button-left').addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            this.keyboard.LEFT = true;
+        });
+        
+        document.getElementById('button-left').addEventListener('touchend', (e) => {
+            e.preventDefault();
+            this.keyboard.LEFT = false;
+        });
+        
+        document.getElementById('button-jump').addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            this.keyboard.SPACE = true;
+        });
+        
+        document.getElementById('button-jump').addEventListener('touchend', (e) => {
+            e.preventDefault();
+            this.keyboard.SPACE = false;
+        });
+        
+        document.getElementById('button-throw').addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            this.keyboard.D = true;
+        });
+        
+        document.getElementById('button-throw').addEventListener('touchend', (e) => {
+            e.preventDefault();
+            this.keyboard.D = false;
+        });
     }
 }

@@ -17,7 +17,7 @@ class ThrowableObject extends MovableObject {
     ];
 
     world;
-
+    glass_sound = new Audio('audio/breaking_glass.mp3');
     breaked = false;
 
 
@@ -36,8 +36,11 @@ class ThrowableObject extends MovableObject {
 
     throw() {
         setInterval(() => {
-            if (this.breaked)
-            this.playAnimation(this.IMAGES_SPLASH);
+            if (this.breaked) {
+                this.playAnimation(this.IMAGES_SPLASH);
+               this.glass_sound.play();
+               // this.breaked = false;
+            }
             else
             this.playAnimation(this.IMAGES);
         }, 100);

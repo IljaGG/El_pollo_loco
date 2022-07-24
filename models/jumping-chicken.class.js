@@ -32,6 +32,7 @@ class JumpingChicken extends MovableObject {
 
     animate() {
         setInterval(() => {
+            if (!this.isDead())
             this.moveLeft();
         }, 1000 / 60);
 
@@ -45,6 +46,7 @@ class JumpingChicken extends MovableObject {
             }, 120); 
 
         setInterval(() => {
+            if (!this.isDead())
             this.jump();
         }, 2000 + Math.random() * 2000);
 

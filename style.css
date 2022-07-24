@@ -10,85 +10,128 @@ body {
     justify-content: center;
     align-items: center;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
 }
+
 .wrapper {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 100vh;;
 }
 
 button {
-    position: fixed;
-    top: 50px;
-    width: 200px;
-    height: 40px;
-    font-size: 23px;
+    position: absolute;
+    top: 7%;
+    left: 43%;
+    padding: 5px;
+    font-size: 25px;
     background-color: #fcd94b;
     border-radius: 10px;
     color:#6f3019;
 }
 
 .start-wrapper {
+    width: 100%;
     position: absolute;
+    z-index: 999;
 }
 
 .start-wrapper img {
-    width: 900px;
+    width: 100%;
+}
+
+.top-mobile-btn-nav {
+    position: absolute;
+    width: 100%;
+    top: 0%;
+    z-index: 100;
+}
+
+.btn-top {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-top img{
+    width: 30px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 3px;
+    background-color: #f9cc48;
+    opacity: .8;
+    margin: 5px;
+}
+
+.bottom-mobile-btn-nav {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    bottom: 0%;
+    z-index: 100;
+}
+
+.btn-bottom {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.btn-bottom img{
+    width: 40px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 3px;
+    background-color: #f9cc48;
+    opacity: .8;
+    margin: 10px;
 }
 
 .canvas {
     position: absolute;
     z-index: 1;
+    display: block;
 }
 
-#game-over-wrapper {
-    position: absolute;
-    top: -1px;
+@media only screen and (max-width: 720px) {
+    .canvas #you-won-wrapper #you-won-wrapper-background .game-over-wrapper .game-over-wrapper img{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-heigth: 480px) {
+    .canvas #you-won-wrapper #you-won-wrapper-background .game-over-wrapper .game-over-wrapper img{
+        height: 100vh;
+        width: 100%;
+    }
 }
 
 #you-won-wrapper {
     position: absolute;
-    font-size: 200px;
+    font-size: 100px;
     color: #f9cc48;
     text-align: center;
-    width: 720px;
-    height: 480px;
 }
 
 #you-won-wrapper-background {
     position: absolute;
     background-color: black;
     opacity: 0.5;
-    width: 720px;
+    width: 720px; 
     height: 480px;
+}
+
+#game-over-wrapper {
+    position: absolute;
 }
 
 .game-over-wrapper img {
     z-index: 100;
+    width: 720px; 
+    height: 480px;
 }
-
-#info {
-    display: flex;
-    justify-content: center;
-   
-    flex-wrap: wrap;
-    top: 19%;
-    font-size: 25px;
-    flex-direction: column;
-    background-color: #f9cc48;
-    color: #6e2929;
-    border-radius: 10px;
-    position: fixed;
-    left: 5%;
-    bottom: 50%;
-    padding: 10px;
-    height: 420px;
-    width: 200px;
-    text-align: center;
-}
-
 
 canvas {
     background-color: black;
@@ -100,3 +143,41 @@ canvas {
 .d-none {
     display: none;
 }
+
+
+@media (max-width: 720px) {
+    button {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 531px) {
+    button {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 454px) {
+    button {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 377px) {
+    button {
+        font-size: 10px;
+    }
+}
+
+@media (max-height: 488px) {
+    .start-wrapper img {
+        width: 100%;
+    }
+    canvas {
+        max-height: 100vh;
+    }
+    button {
+        top: 50px;
+    }
+}
+

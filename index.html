@@ -31,19 +31,41 @@
 </head>
 
 <body>
-    <button id="start-btn" onclick="startGame()">Start Game</button>
+
     <div class="wrapper">
+        <div id="top-mobile-btn" class="top-mobile-btn-nav d-none">
+
+            <div class="btn-top">
+                <img id="button-pause" src="img/buttons/pause-48.png" alt="pause">
+                <img id="button-play" src="img/buttons/play-48.png" alt="play">
+            </div>
+
+        </div>
         <div id="start-wrapper" class="start-wrapper">
+            <button id="start-btn" onclick="startGame()">Start Game</button>
             <img src="img/9.Intro _ Outro Image/Start Screen/Opcion 1.png">
         </div>
-        <canvas id="canvas" class="canvas; d-none" width="720" height="480"></canvas>
-        <div id="game-over-wrapper" style="position: absolute; z-index: 5" class="game-over-wrapper; d-none">
-            <img id="you-lost" src="img/9.Intro _ Outro Image/_Game over_ screen/1.you lost.png" alt="You Lost"
-                width="720" height="482">
+        <canvas id="canvas" class="canvas d-none" width="720" height="480"></canvas>
+        <div id="game-over-wrapper" style="z-index: 5" class="game-over-wrapper d-none">
+            <img id="you-lost" src="img/9.Intro _ Outro Image/_Game over_ screen/1.you lost.png" alt="You Lost">
         </div>
         <div id="you-won-wrapper-background" class="d-none" style="z-index: 100"></div>
-        <div id="you-won-wrapper" class="d-none" style="z-index: 101">
+        <div id="you-won-wrapper" class="d-none" style="z-index: 201">
             YOU WON!
+        </div>
+        <div id="bottom-mobile-btn" class="bottom-mobile-btn-nav d-none">
+
+            <div class="btn-bottom">
+                <img id="button-left" src="img/buttons/arrow-89-48.png" alt="left">
+                <img id="button-right" src="img/buttons/arrow-25-48.png" alt="right">
+            </div>
+
+            <div class="btn-bottom">
+                <img id="button-jump" src="img/buttons/arrow-142-48.png" alt="up">
+                <img id="button-throw" src="img/buttons/arrow-57-48.png" alt="throw">
+            </div>
+
+
         </div>
     </div>
 
