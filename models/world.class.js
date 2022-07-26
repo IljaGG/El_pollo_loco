@@ -13,6 +13,8 @@ class World {
     endboss = this.level.enemies.find(e => e instanceof Endboss);
     chicken = this.level.enemies.filter(e => e instanceof Chicken);
 
+    glass_sound = new Audio('audio/breaking_glass.mp3');
+
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
@@ -88,6 +90,7 @@ class World {
 
     bottleCollideWithEndboss(bottle) {
         if (!bottle.breaked && bottle.isColliding(this.endboss)) {
+            this.glass_sound.play();
             this.endboss.hit();
             this.endbossHealthBar.setPercentage(this.endboss.energy);
             bottle.breaked = true;

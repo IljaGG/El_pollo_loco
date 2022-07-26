@@ -86,19 +86,6 @@ class Endboss extends MovableObject {
         }, 1000 / 60)
     }
 
-
-
-  /* youWon() {
-        let startImage = document.getElementById('start-wrapper')
-        let startButton = document.getElementById('start-btn');
-        let gameCanvas = document.getElementById('canvas');
-        
-        startImage.classList.remove('d-none');
-        startButton.classList.remove('d-none');
-        startButton.focus();
-        gameCanvas.classList.add('d-none');
-    }*/
-
     youWonImg() {
         let youWonImg = document.getElementById('you-won-wrapper');
         let youWonImgBackground = document.getElementById('you-won-wrapper-background');
