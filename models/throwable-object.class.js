@@ -21,7 +21,7 @@ class ThrowableObject extends MovableObject {
     breaked = false;
 
 
-    constructor(x, y) {
+    constructor(x, y, otherDirection) {
         super().loadImage('img/6.botella/Rotacien/Mesa de trabajo 1 copia 3.png');
         this.loadImages(this.IMAGES);
         this.loadImages(this.IMAGES_SPLASH);
@@ -30,6 +30,7 @@ class ThrowableObject extends MovableObject {
         this.width = 65;
         this.height = 70;
         this.speedY = 25;
+        this.otherDirection = otherDirection;
         this.applyGravity();
         this.throw();
     }
