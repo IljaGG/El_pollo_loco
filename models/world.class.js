@@ -85,7 +85,7 @@ class World {
     }
 
     validateCharacterEnemyCollision(enemy) {
-        return !enemy.isDead() && !this.character.isHurt() && this.character.isColliding(enemy);
+        return !enemy.isDead() && !this.character.isHurt() && this.character.isColliding(enemy) && !this.character.isColliding(this.endboss);
     }
 
     bottleCollideWithEndboss(bottle) {
@@ -146,6 +146,7 @@ class World {
         this.addObjectsToMap(this.throwableObjects);
 
         this.addToMap(this.character);
+        this.addToMap(this.endboss);
 
         this.ctx.translate(-this.camera_x, 0);
         // ----- space for fixed objects -----

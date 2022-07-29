@@ -1,8 +1,8 @@
 class Endboss extends MovableObject {
-    y = 145;
+    y = 185;
     speed = 0.5;
-    width = 300;
-    height = 300;
+    width = 250;
+    height = 250;
     world;
 
     offset = {
@@ -54,6 +54,15 @@ class Endboss extends MovableObject {
 
 
     animate() {
+
+        setInterval(() => {
+            if (this.x > this.world.character.x) {
+                this.otherDirection = false;
+            }
+            else {
+                this.otherDirection = true;
+            }
+        }, 200);
 
         setInterval(() => {
             if (this.isDead()) {
