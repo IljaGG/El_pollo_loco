@@ -64,14 +64,19 @@ class Endboss extends MovableObject {
 
         setInterval(() => {
             if (this.isAttacked) {
-                setTimeout(() => {
-                    this.playAnimation(this.IMAGES_ANGRY);
+                
+                this.speed = 20;
+                this.moveLeft;
+                
+                this.speedY = 30;
+                this.jump();
+                
+                
 
-                    this.playAnimation(this.IMAGES_WALKING);
-                    this.moveLeft();
-                    this.speed = 20;
-                }, 5000)
-                this.isAttacked = false;
+                setTimeout(() => {
+                    this.isAttacked = false;
+                }, 3000)
+
             }
         }, 200);
 
@@ -96,7 +101,7 @@ class Endboss extends MovableObject {
 
             }
             else if (this.isHurt()) {
-                this.playAnimation(this.IMAGES_ANGRY);
+              this.playAnimation(this.IMAGES_ANGRY);
             }
             else if (this.world.endbossIsInSight() == true) {
                 this.playAnimation(this.IMAGES_ALERT);
@@ -107,7 +112,7 @@ class Endboss extends MovableObject {
         }, 200);
 
         setInterval(() => {
-            // if is hurt, insight == true, dann speed 30 und walk
+        
             if (this.world.endbossIsInSight() == false) {
                 this.moveLeft();
             }
