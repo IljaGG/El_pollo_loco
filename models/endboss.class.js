@@ -76,7 +76,7 @@ class Endboss extends MovableObject {
                 setTimeout(() => {
                     this.isAttacked = false;
                 }, 3000)
-
+                console.log('Endboss:', world.endboss);
             }
         }, 200);
 

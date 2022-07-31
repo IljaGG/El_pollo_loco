@@ -14,6 +14,8 @@ class World {
     chicken = this.level.enemies.filter(e => e instanceof Chicken);
 
     glass_sound = new Audio('audio/breaking_glass.mp3');
+    coin_sound = new Audio('audio/coin.mp3');
+    bottle_plopp = new Audio('audio/bottle_plopp.mp3');
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -52,7 +54,7 @@ class World {
             this.checkCoinCollisions();
             this.checkBottleCollisions();
             this.endbossIsInSightHealthBar();
-        }, 1000 / 25);
+        }, 1000 / 60);
     }
 
     checkThrowObjects() {
@@ -104,6 +106,7 @@ class World {
     checkCoinCollisions() {
         this.level.coins.forEach((coin, index) => {
             if (this.character.isColliding(coin)) {
+                this.coin_sound.play();
                 this.character.collectCoin();
                 this.coinBar.setCoinAmmount(this.character.coinAmmount);
                 this.level.coins.splice(index, 1);
@@ -114,6 +117,7 @@ class World {
     checkBottleCollisions() {
         this.level.bottles.forEach((bottle, index) => {
             if (this.character.isColliding(bottle)) {
+                this.bottle_plopp.play();
                 this.character.collectBottle();
                 this.bottleBar.setBottleAmmount(this.character.bottleAmmount);
                 this.level.bottles.splice(index, 1);
