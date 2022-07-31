@@ -66,7 +66,7 @@ class Endboss extends MovableObject {
             if (this.isAttacked) {
                 
                 this.speed = 20;
-                this.moveLeft;
+                this.moveLeft();
                 
                 this.speedY = 30;
                 this.jump();
@@ -76,7 +76,8 @@ class Endboss extends MovableObject {
                 setTimeout(() => {
                     this.isAttacked = false;
                 }, 3000)
-                console.log('Endboss:', world.endboss);
+                console.log('Endboss isAttacked:', world.endboss.isAttacked);
+                console.log('Endboss isInSight:',  world.endbossIsInSight());
             }
         }, 200);
 
