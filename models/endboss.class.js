@@ -1,9 +1,10 @@
 class Endboss extends MovableObject {
     y = 185;
-    speed = 0.5;
+    speed = 0.8;
     width = 250;
     height = 250;
     world;
+    isAttacked = false;
 
     offset = {
         top: 30,
@@ -56,6 +57,25 @@ class Endboss extends MovableObject {
     animate() {
 
         setInterval(() => {
+            if (this.world.endbossIsInSight() == true && this.isHurt()) {
+                this.isAttacked = true;
+            }
+        }, 200);
+
+        setInterval(() => {
+            if (this.isAttacked) {
+                setTimeout(() => {
+                    this.playAnimation(this.IMAGES_ANGRY);
+
+                    this.playAnimation(this.IMAGES_WALKING);
+                    this.moveLeft();
+                    this.speed = 20;
+                }, 5000)
+                this.isAttacked = false;
+            }
+        }, 200);
+
+        setInterval(() => {
             if (this.x > this.world.character.x) {
                 this.otherDirection = false;
             }
@@ -67,28 +87,27 @@ class Endboss extends MovableObject {
         setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
-                setTimeout (() => {
+                setTimeout(() => {
                     this.youWonImg();
                 }, 2000);
-                setTimeout (() => {
+                setTimeout(() => {
                     this.reload();
                 }, 4000);
-                
+
             }
             else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_ANGRY);
             }
-
             else if (this.world.endbossIsInSight() == true) {
-
                 this.playAnimation(this.IMAGES_ALERT);
-
-            } else {
+            }
+            else {
                 this.playAnimation(this.IMAGES_WALKING);
             }
         }, 200);
 
         setInterval(() => {
+            // if is hurt, insight == true, dann speed 30 und walk
             if (this.world.endbossIsInSight() == false) {
                 this.moveLeft();
             }

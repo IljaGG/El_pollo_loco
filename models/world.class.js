@@ -76,8 +76,12 @@ class World {
 
     checkCharacterEnemyCollision(enemy) {
         if (this.validateCharacterEnemyCollision(enemy))
-            if (this.character.isAboveGround())
-                enemy.kill();
+            if (this.character.isAboveGround()) {
+                if (enemy instanceof Chicken)
+                    enemy.kill();
+                if (enemy instanceof JumpingChicken)
+                    enemy.kill();
+            }
             else {
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energy);
@@ -85,7 +89,7 @@ class World {
     }
 
     validateCharacterEnemyCollision(enemy) {
-        return !enemy.isDead() && !this.character.isHurt() && this.character.isColliding(enemy) && !this.character.isColliding(this.endboss);
+        return !enemy.isDead() && !this.character.isHurt() && this.character.isColliding(enemy);
     }
 
     bottleCollideWithEndboss(bottle) {
@@ -127,7 +131,7 @@ class World {
 
     endbossIsInSightHealthBar() {
         if (this.endboss.x - (this.character.x + this.character.width) < 1200 && !this.endbossHealthBar.drawable) {
-           this.endbossHealthBar.drawable = true;
+            this.endbossHealthBar.drawable = true;
         }
     }
 
@@ -135,7 +139,9 @@ class World {
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
+
         this.ctx.translate(this.camera_x, 0);
+
 
         this.addObjectsToMap(this.level.backgroundObjects);
 
@@ -208,37 +214,37 @@ class World {
             e.preventDefault();
             this.keyboard.RIGHT = true;
         });
-        
+
         document.getElementById('button-right').addEventListener('touchend', (e) => {
             e.preventDefault();
             this.keyboard.RIGHT = false;
         });
-        
+
         document.getElementById('button-left').addEventListener('touchstart', (e) => {
             e.preventDefault();
             this.keyboard.LEFT = true;
         });
-        
+
         document.getElementById('button-left').addEventListener('touchend', (e) => {
             e.preventDefault();
             this.keyboard.LEFT = false;
         });
-        
+
         document.getElementById('button-jump').addEventListener('touchstart', (e) => {
             e.preventDefault();
             this.keyboard.SPACE = true;
         });
-        
+
         document.getElementById('button-jump').addEventListener('touchend', (e) => {
             e.preventDefault();
             this.keyboard.SPACE = false;
         });
-        
+
         document.getElementById('button-throw').addEventListener('touchstart', (e) => {
             e.preventDefault();
             this.keyboard.D = true;
         });
-        
+
         document.getElementById('button-throw').addEventListener('touchend', (e) => {
             e.preventDefault();
             this.keyboard.D = false;
