@@ -76,8 +76,9 @@ class Endboss extends MovableObject {
                 setTimeout(() => {
                     this.isAttacked = false;
                 }, 3000)
-                console.log('Endboss isAttacked:', world.endboss.isAttacked);
-                console.log('Endboss isInSight:',  world.endbossIsInSight());
+                //console.log('Endboss isAttacked:', world.endboss.isAttacked);
+                //console.log('Endboss isInSight:',  world.endbossIsInSight());
+                console.log('Endboss x:', world.endboss.x)
             }
         }, 200);
 
