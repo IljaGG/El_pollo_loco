@@ -6,7 +6,7 @@ class CoinBar extends DrawableObject {
         'img/7.Marcadores/Barra/Marcador moneda/Verde/40_  copia 2.png',
         'img/7.Marcadores/Barra/Marcador moneda/Verde/60_  copia 2.png',
         'img/7.Marcadores/Barra/Marcador moneda/Verde/80_  copia 2.png',
-        'img/7.Marcadores/Barra/Marcador moneda/Verde/0_  copia 2.png'
+        'img/7.Marcadores/Barra/Marcador moneda/Verde/100_ copia 2.png'
     ];
 
     coinsAmmount = 0;

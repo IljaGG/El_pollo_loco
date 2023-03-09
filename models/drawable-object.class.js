@@ -21,16 +21,6 @@ class DrawableObject {
     }
 
 
-    drawFrame(ctx) {
-        if (this instanceof Character) {
-        ctx.beginPath();
-        ctx.lineWidth = '3';
-        ctx.strokeStyle = 'red';
-        ctx.rect(this.x + 30, this.y + 90, this.width -70, this.height - 100);
-        ctx.stroke();
-    }
-    }
-
     loadImages(arr) {
         arr.forEach((path) => {
             let img = new Image();

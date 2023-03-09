@@ -34,15 +34,10 @@
 
     <div class="wrapper">
         <div id="top-mobile-btn" class="top-mobile-btn-nav d-none">
-
-            <div class="btn-top">
-                <img id="button-pause" src="img/buttons/pause-48.png" alt="pause">
-                <img id="button-play" src="img/buttons/play-48.png" alt="play">
-            </div>
-
+            <button onclick="goFullScreen();">Go Fullscreen</button>
         </div>
         <div id="start-wrapper" class="start-wrapper">
-            <button id="start-btn" onclick="startGame()">Start Game</button>
+            <button id="start-btn" class="start-button" onclick="startGame()">Start Game</button>
             <img src="img/9.Intro _ Outro Image/Start Screen/Opcion 1.png">
         </div>
         <canvas id="canvas" class="canvas d-none" width="720" height="480"></canvas>
@@ -52,6 +47,14 @@
         <div id="you-won-wrapper-background" class="d-none" style="z-index: 100"></div>
         <div id="you-won-wrapper" class="d-none" style="z-index: 201">
             YOU WON!
+        </div>
+        <div id="game-info-background" class="d-none" style="z-index: 299;">
+
+        </div>
+        <div id="game-info" class="d-none" style="z-index: 300;"> 
+            Move: Press left Arrow & right Arrow <br>
+            Jump: Press SPACE <br>
+            Throw Bottle: Press D
         </div>
         <div id="bottom-mobile-btn" class="bottom-mobile-btn-nav d-none">
 

@@ -5,12 +5,15 @@
 body {
     margin: 0;
     padding: 0;
-    background-color:#6f3019;
+    background-color: #6f3019;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw;
     height: 100%;
+    overflow: hidden;
+    background-image: url('img/desert.png');
+    background-size: cover;
 }
 
 .wrapper {
@@ -19,28 +22,29 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100vh;;
+    height: 100vh;
 }
 
-button {
+.start-button {
     position: absolute;
-    top: 7%;
-    left: 43%;
-    padding: 5px;
-    font-size: 25px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    top: 9%;
+    padding: 11px;
+    font-size: 33px;
     background-color: #fcd94b;
     border-radius: 10px;
-    color:#6f3019;
+    color: #6f3019;
 }
 
 .start-wrapper {
-    width: 100%;
+    max-width: 100%;
     position: absolute;
     z-index: 999;
 }
 
 .start-wrapper img {
-    width: 100%;
+    max-width: 100%;
 }
 
 .top-mobile-btn-nav {
@@ -48,21 +52,18 @@ button {
     width: 100%;
     top: 0%;
     z-index: 100;
-}
-
-.btn-top {
     display: flex;
     justify-content: flex-end;
 }
 
-.btn-top img{
-    width: 30px;
-    border: 2px solid black;
+.top-mobile-btn-nav button {
+    margin-top: 5px;
+    margin-right: 5px;
+    padding: 5px;
+    font-size: 20px;
+    background-color: #fcd94b;
     border-radius: 10px;
-    padding: 3px;
-    background-color: #f9cc48;
-    opacity: .8;
-    margin: 5px;
+    color: #6f3019;
 }
 
 .bottom-mobile-btn-nav {
@@ -74,13 +75,14 @@ button {
     z-index: 100;
 }
 
+
 .btn-bottom {
     margin-left: 20px;
     margin-right: 20px;
 }
 
-.btn-bottom img{
-    width: 40px;
+.btn-bottom img {
+    width: 60px;
     border: 2px solid black;
     border-radius: 10px;
     padding: 3px;
@@ -96,14 +98,14 @@ button {
 }
 
 @media only screen and (max-width: 720px) {
-    .canvas #you-won-wrapper #you-won-wrapper-background .game-over-wrapper .game-over-wrapper img{
+    .canvas #you-won-wrapper #you-won-wrapper-background .game-over-wrapper .game-over-wrapper img {
         width: 100%;
     }
 }
 
 @media only screen and (max-heigth: 480px) {
-    .canvas #you-won-wrapper #you-won-wrapper-background .game-over-wrapper .game-over-wrapper img{
-        height: 100vh;
+    .canvas #you-won-wrapper #you-won-wrapper-background .game-over-wrapper .game-over-wrapper img {
+        height: 100dvh;
         width: 100%;
     }
 }
@@ -119,8 +121,22 @@ button {
     position: absolute;
     background-color: black;
     opacity: 0.5;
-    width: 720px; 
+    width: 720px;
     height: 480px;
+}
+
+#game-info-background {
+    position: absolute;
+    background-color: black;
+    opacity: 0.5;
+    width: 720px;
+    height: 480px;
+}
+
+#game-info {
+    position: absolute;
+    font-size: 40px;
+    color: white;
 }
 
 #game-over-wrapper {
@@ -129,7 +145,7 @@ button {
 
 .game-over-wrapper img {
     z-index: 100;
-    width: 720px; 
+    width: 720px;
     height: 480px;
 }
 
@@ -147,37 +163,48 @@ canvas {
 
 @media (max-width: 720px) {
     button {
-        font-size: 18px;
+        font-size: 18px !important;
+    }
+
+    canvas {
+        width: 100dvw;
+        height: 100dvh;
     }
 }
 
 @media (max-width: 531px) {
     button {
-        font-size: 15px;
+        font-size: 15px !important;
     }
 }
 
 @media (max-width: 454px) {
     button {
-        font-size: 12px;
+        font-size: 12px !important;
     }
 }
 
 @media (max-width: 377px) {
     button {
-        font-size: 10px;
+        font-size: 10px !important;
+    }
+
+    .start-button{
+        top: 5%;
     }
 }
 
 @media (max-height: 488px) {
+    
     .start-wrapper img {
         width: 100%;
     }
+
     canvas {
         max-height: 100vh;
     }
+
     button {
-        top: 50px;
+        top: 50px !important;
     }
 }
-

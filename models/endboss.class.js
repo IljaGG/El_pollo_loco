@@ -1,6 +1,6 @@
 class Endboss extends MovableObject {
     y = 185;
-    speed = 0.8;
+    speed = 0.4;
     width = 250;
     height = 250;
     world;
@@ -60,30 +60,31 @@ class Endboss extends MovableObject {
             if (this.world.endbossIsInSight() == true && this.isHurt()) {
                 this.isAttacked = true;
             }
-        }, 200);
+        }, 100);
 
         setInterval(() => {
-            if (this.isAttacked) {
-                
-                this.speed = 20;
-                this.moveLeft();
-                
-                this.speedY = 30;
-                this.jump();
-                
-                
+
+
+            if (this.isDead())
+                this.isAttacked = false;
+            else if (this.isAttacked) {
+                setTimeout(() => {
+                    this.speed = 30;
+                    this.moveLeft();
+                    this.playAnimation(this.IMAGES_WALKING);
+                }, 1000)
 
                 setTimeout(() => {
                     this.isAttacked = false;
-                }, 3000)
-                //console.log('Endboss isAttacked:', world.endboss.isAttacked);
-                //console.log('Endboss isInSight:',  world.endbossIsInSight());
-                console.log('Endboss x:', world.endboss.x)
+                    this.speed = 0.4;
+                }, 2000)
             }
-        }, 200);
+
+        }, 1000 / 25);
 
         setInterval(() => {
             if (this.x > this.world.character.x) {
+                this.isAttacked = false;
                 this.otherDirection = false;
             }
             else {
@@ -103,8 +104,9 @@ class Endboss extends MovableObject {
 
             }
             else if (this.isHurt()) {
-              this.playAnimation(this.IMAGES_ANGRY);
+                this.playAnimation(this.IMAGES_ANGRY);
             }
+
             else if (this.world.endbossIsInSight() == true) {
                 this.playAnimation(this.IMAGES_ALERT);
             }
@@ -114,7 +116,6 @@ class Endboss extends MovableObject {
         }, 200);
 
         setInterval(() => {
-        
             if (this.world.endbossIsInSight() == false) {
                 this.moveLeft();
             }

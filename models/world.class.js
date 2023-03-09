@@ -191,9 +191,7 @@ class World {
 
             mo.draw(this.ctx);
 
-            //border
-            mo.drawFrame(this.ctx);
-            //border
+
             if (mo.otherDirection) {
                 this.flipImageBack(mo);
             }
